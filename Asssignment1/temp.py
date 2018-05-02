@@ -22,22 +22,32 @@ def printbasic():
     cv2.destroyAllWindows()
 
 '''start training'''
-epoch,limit=1,10
+epoch,limit=1,3
+epsilon=5
 lrate=1e-6
 
 w=[random.random(),random.random(),random.random()]
+'''
+for i in range(0,limit):
+    w[i]=ow[:]
+'''
 
 print(key1.shape)   #[h,w]
 print(key1[0,1])    #[h,w]
 
-while epoch<limit:
+#store[key1.shape[0]*key1.shape[1]]=np.array([])
+
+store=w[:]
+
+while epoch==1 or epoch<limit and abs(store[epoch]-store[epoch-1])>epsilon:
     for i in range(key1.shape[0]):  #height
         for j in range(key1.shape[1]):  #width
             pass
-            temp=E[j,i]-(w[0]*key1[j,i]+w[1]*key2[j,i]+w[2]*inp[j,i])
-            
-
-
+            temp=E[i,j]-(w[0]*key1[i,j]+w[1]*key2[i,j]+w[2]*inp[i,j])
+            w[0]+=lrate*temp*key1[i,j]
+            w[1]+=lrate*temp*key2[i,j]
+            w[2]+=lrate*temp*inp[i,j]
+    store.append([w[0],w[1],w[2]])
     epoch+=1
-    pass
 
+print(store)
