@@ -28,7 +28,7 @@ print(key1[0,1])    #[h,w]
 
 '''start training'''
 epoch,limit=1,3
-epsilon=5
+epsilon=5e-5
 lrate=1e-6
 
 w=[random.random(),random.random(),random.random()]
@@ -55,6 +55,7 @@ def check(after,before):
 print(store)
 
 while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
+    counting=0
     for i in range(key1.shape[0]):  #height
         for j in range(key1.shape[1]):  #width
             pass
@@ -64,5 +65,7 @@ while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoc
             w[2]+=lrate*temp*inp[i,j]
     store.append([w[0],w[1],w[2]])
     epoch+=1
+    counting+=1
 
+print('Totally count',counting,'epochs')
 print((store[len(store)-1]))    #answer w 
