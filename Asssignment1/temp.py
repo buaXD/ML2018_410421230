@@ -20,3 +20,5 @@ def printbasic():
     k=cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+'''start training'''
+epoch=1
