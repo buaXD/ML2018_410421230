@@ -21,25 +21,40 @@ def printbasic():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
+'''
+print(key1.shape)   #[h,w]
+print(key1[0,1])    #[h,w]
+'''
+
 '''start training'''
 epoch,limit=1,3
 epsilon=5
 lrate=1e-6
 
 w=[random.random(),random.random(),random.random()]
-'''
-for i in range(0,limit):
-    w[i]=ow[:]
-'''
+store=[]
+store.append(w[:])
 
-print(key1.shape)   #[h,w]
-print(key1[0,1])    #[h,w]
+def checkdet(after,before):             #check(store[epoch-1],store[epoch-2])>epsilon)
+    print(after)
+    t=np.array([])
+    for i in range(len(after)):
+        np.append(t,after[i]-before[i])
+    return abs(np.linalg.det(t))
 
-#store[key1.shape[0]*key1.shape[1]]=np.array([])
+def check(after,before):
+    temp=0
+    for i in range(len(after)):
+        if abs(after[i]-before[i])>epsilon:
+            temp+=1
+    if temp==len(after):
+        return 1
+    else:
+        return 0
 
-store=w[:]
+print(store)
 
-while epoch==1 or epoch<limit and abs(store[epoch]-store[epoch-1])>epsilon:
+while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
     for i in range(key1.shape[0]):  #height
         for j in range(key1.shape[1]):  #width
             pass
@@ -50,4 +65,4 @@ while epoch==1 or epoch<limit and abs(store[epoch]-store[epoch-1])>epsilon:
     store.append([w[0],w[1],w[2]])
     epoch+=1
 
-print(store)
+print((store[len(store)-1]))    #answer w 
