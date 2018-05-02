@@ -2,12 +2,13 @@
 import cv2
 import random
 import numpy as np
-import matplotlib
 
 key1=cv2.imread(r'..\ML2018_410421230\Asssignment1\keys\key1.png',0)
 key2=cv2.imread(r'..\ML2018_410421230\Asssignment1\keys\key2.png',0)
 inp=cv2.imread(r'..\ML2018_410421230\Asssignment1\I.png',0)
 E=cv2.imread(r'..\ML2018_410421230\Asssignment1\E.png',0)
+Eprime=cv2.imread(r'..\ML2018_410421230\Asssignment1\Eprime.png',0)
+
 
 def printbasic():
     cv2.namedWindow('key1',cv2.WINDOW_AUTOSIZE)
@@ -25,12 +26,11 @@ def printbasic():
 print(key1.shape)   #[h,w]
 print(key1[0,1])    #[h,w]
 '''
-
-'''start training'''
 epoch,limit=1,3
 epsilon=5e-5
-lrate=1e-6
+lrate=1e-8
 
+'''start training'''
 w=[random.random(),random.random(),random.random()]
 store=[]
 store.append(w[:])
@@ -54,7 +54,6 @@ def check(after,before):
 
 print('Original weight is',store)
 
-
 while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
     counting=0
     for i in range(key1.shape[0]):  #height
@@ -71,5 +70,18 @@ ans=[]
 ans.append(store[len(store)-1])
 print('Best weight is',ans)    #answer w
 
-def decrypt():
-    pass
+out=Eprime.copy()
+
+def decryptimg(inpimg,outimg):
+    for i in range(Eprime.shape[0]):  #height
+        for j in range(Eprime.shape[1]):  #width
+            outimg[i,j]=(inpimg[i,j]-ans[0][0]*key1[i,j]-ans[0][1]*key2[i,j])/ans[0][2]
+    return outimg
+
+out=decryptimg(Eprime,out)
+
+cv2.imwrite(r'..\ML2018_410421230\Asssignment1\output.png',out,[int(cv2.IMWRITE_PNG_COMPRESSION),9])
+cv2.namedWindow('out',cv2.WINDOW_AUTOSIZE)
+cv2.imshow('out',out)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
