@@ -52,13 +52,13 @@ def check(after,before):
     else:
         return 0
 
-print(store)
+print('Original weight is',store)
+
 
 while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
     counting=0
     for i in range(key1.shape[0]):  #height
         for j in range(key1.shape[1]):  #width
-            pass
             temp=E[i,j]-(w[0]*key1[i,j]+w[1]*key2[i,j]+w[2]*inp[i,j])
             w[0]+=lrate*temp*key1[i,j]
             w[1]+=lrate*temp*key2[i,j]
@@ -66,6 +66,10 @@ while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoc
     store.append([w[0],w[1],w[2]])
     epoch+=1
     counting+=1
-
 print('Totally count',counting,'epochs')
-print((store[len(store)-1]))    #answer w 
+ans=[]
+ans.append(store[len(store)-1])
+print('Best weight is',ans)    #answer w
+
+def decrypt():
+    pass
