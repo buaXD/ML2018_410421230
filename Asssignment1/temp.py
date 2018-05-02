@@ -1,5 +1,6 @@
 # pylint: disable=no-member
 import cv2
+import random
 import numpy as np
 import matplotlib
 
@@ -17,8 +18,26 @@ def printbasic():
     cv2.imshow('I',inp)
     cv2.namedWindow('E',cv2.WINDOW_AUTOSIZE)
     cv2.imshow('E',E)
-    k=cv2.waitKey(0)
+    cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 '''start training'''
-epoch=1
+epoch,limit=1,10
+lrate=1e-6
+
+w=[random.random(),random.random(),random.random()]
+
+print(key1.shape)   #[h,w]
+print(key1[0,1])    #[h,w]
+
+while epoch<limit:
+    for i in range(key1.shape[0]):  #height
+        for j in range(key1.shape[1]):  #width
+            pass
+            temp=E[j,i]-(w[0]*key1[j,i]+w[1]*key2[j,i]+w[2]*inp[j,i])
+            
+
+
+    epoch+=1
+    pass
+
