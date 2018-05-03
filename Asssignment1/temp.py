@@ -27,8 +27,8 @@ print(key1.shape)   #[h,w]
 print(key1[0,1])    #[h,w]
 '''
 epoch,limit=1,3
-epsilon=5e-5
-lrate=1e-8
+epsilon=1e-8
+lrate=1e-5
 
 '''start training'''
 w=[random.random(),random.random(),random.random()]
@@ -54,8 +54,11 @@ def check(after,before):
 
 print('Original weight is',store)
 
+counting=0
+
+#while epoch<=limit:
 while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
-    counting=0
+    
     for i in range(key1.shape[0]):  #height
         for j in range(key1.shape[1]):  #width
             temp=E[i,j]-(w[0]*key1[i,j]+w[1]*key2[i,j]+w[2]*inp[i,j])
@@ -65,7 +68,7 @@ while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoc
     store.append([w[0],w[1],w[2]])
     epoch+=1
     counting+=1
-print('Totally count',counting,'epochs')
+print('Totally count',counting,'epoch(s)')
 ans=[]
 ans.append(store[len(store)-1])
 print('Best weight is',ans)    #answer w
