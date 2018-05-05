@@ -17,6 +17,6 @@
 | ![i]            | ![e]            |
 ## 用訓練出的W解密相關圖片
 
-| Eprime          | Eprime - Decrypted |
+| E'              | E'(Decrypted) |
 | :-------------: |:---------------:|
 | ![alt text][ep] | ![alt text][de] |
