@@ -18,7 +18,8 @@
 
 | Eprime          | Eprime - Decrypted |
 | :-------------: |:---------------:|
-| ![alt text][ep] | ![alt text][de] |
+| ![e']           | ![out]          |
+
 
 
 | E'              |E'(Decrypted)  |
