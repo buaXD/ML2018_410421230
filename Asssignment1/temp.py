@@ -9,7 +9,6 @@ inp=cv2.imread(r'..\ML2018_410421230\Asssignment1\I.png',0)
 E=cv2.imread(r'..\ML2018_410421230\Asssignment1\E.png',0)
 Eprime=cv2.imread(r'..\ML2018_410421230\Asssignment1\Eprime.png',0)
 
-
 def printbasic():
     cv2.namedWindow('key1',cv2.WINDOW_AUTOSIZE)
     cv2.imshow('key1',key1)
@@ -26,9 +25,9 @@ def printbasic():
 print(key1.shape)   #[h,w]
 print(key1[0,1])    #[h,w]
 '''
-epoch,limit=1,3
-epsilon=1e-8
-lrate=1e-5
+epoch,limit=1,10
+epsilon=1e-5
+lrate=1e-7
 
 '''start training'''
 w=[random.random(),random.random(),random.random()]
@@ -73,7 +72,8 @@ ans=[]
 ans.append(store[len(store)-1])
 print('Best weight is',ans)    #answer w
 
-out=Eprime.copy()
+#out=Eprime.copy()
+out=np.zeros((300,400),int)
 
 def decryptimg(inpimg,outimg):
     for i in range(Eprime.shape[0]):  #height
@@ -83,7 +83,9 @@ def decryptimg(inpimg,outimg):
 
 out=decryptimg(Eprime,out)
 
-cv2.imwrite(r'..\ML2018_410421230\Asssignment1\output.png',out,[int(cv2.IMWRITE_PNG_COMPRESSION),9])
+
+cv2.imwrite(r'..\ML2018_410421230\Asssignment1\output.png',out,[0])
+out=cv2.imread(r'..\ML2018_410421230\Asssignment1\output.png',0)
 cv2.namedWindow('out',cv2.WINDOW_AUTOSIZE)
 cv2.imshow('out',out)
 cv2.waitKey(0)
