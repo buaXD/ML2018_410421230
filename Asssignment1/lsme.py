@@ -55,7 +55,8 @@ print('Original weight is',store)
 
 counting=0
 
-#while epoch<=limit:
+#put w into training
+#while epoch<=limit: (testing)
 while epoch==1 or (epoch<limit and (epoch>=2 and check(store[epoch-1],store[epoch-2]))):   
     
     for i in range(key1.shape[0]):  #height
@@ -72,7 +73,7 @@ ans=[]
 ans.append(store[len(store)-1])
 print('Best weight is',ans)    #answer w
 
-#out=Eprime.copy()
+#out=Eprime.copy()   <-(this will cause encoding problem)
 out=np.zeros((300,400),int)
 
 def decryptimg(inpimg,outimg):
@@ -84,7 +85,7 @@ def decryptimg(inpimg,outimg):
 out=decryptimg(Eprime,out)
 
 
-cv2.imwrite(r'..\ML2018_410421230\Asssignment1\output.png',out,[0])
+cv2.imwrite(r'..\ML2018_410421230\Asssignment1\output.png',out,[0])     #store image
 out=cv2.imread(r'..\ML2018_410421230\Asssignment1\output.png',0)
 cv2.namedWindow('out',cv2.WINDOW_AUTOSIZE)
 cv2.imshow('out',out)
