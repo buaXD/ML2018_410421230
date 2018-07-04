@@ -11,9 +11,9 @@
 ### 處理維度的輸入
 * Conv2D的輸入處理很久
 * MaxPooling2D的問題
-'''
+```
 Negative dimension size caused by subtracting 2 from 1 for 'max_pooling2d_1/MaxPool' (op: 'MaxPool') with input shapes: [?,256,1,128]
-'''
+```
 # 最後結果
 ![perf]
 
