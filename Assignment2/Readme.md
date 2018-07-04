@@ -2,6 +2,8 @@
 
 # Handwritten Character Recognition
 
+* 一些較特殊的使用：LeakyReLU, Nadam
+
 # 最後結果
 ![perf]
 
