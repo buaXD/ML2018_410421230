@@ -10,7 +10,7 @@
 * PCA的套用問題
 ### 處理維度的輸入
 * Conv2D的輸入處理很久
-* MaxPooling2D的問題
+* MaxPooling2D的問題弄很久後時間到了只好先暫時放棄
 ```
 Negative dimension size caused by subtracting 2 from 1 for 'max_pooling2d_1/MaxPool' (op: 'MaxPool') with input shapes: [?,256,1,128]
 ```
