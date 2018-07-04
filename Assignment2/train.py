@@ -1,3 +1,6 @@
-from sklearn.datasets import fetch_mldata
-mnist = fetch_mldata('MNIST original')
-print("finish")
+import keras
+from keras.datasets import mnist
+
+(x_train,y_train),(x_test,y_test)=mnist.load_data()
+
+print(x_train.shape,x_test.shape)
