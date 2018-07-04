@@ -20,13 +20,17 @@ def showimg(img):   #img=x_train[0]
     plt.imshow(img,cmap=plt.cm.gray)
     plt.show()
 
-x_train=x_train.reshape(60000,28*28).astype("float32")/255 #normalization
-x_test=x_test.reshape(10000,28*28).astype("float32")/255
+#x_train=x_train.reshape(60000,28*28).astype("float32")/255 #normalization
+#x_test=x_test.reshape(10000,28*28).astype("float32")/255
 
+x_train=x_train.reshape(60000,28,28,1).astype("float32")/255 #normalization
+x_test=x_test.reshape(10000,28,28,1).astype("float32")/255
+
+'''
 pca=PCA(256,True,True)
 x_train=pca.fit_transform(x_train)
 x_test=pca.transform(x_test)
-
+'''
 #x_train=x_train.reshape((60000,256,1))
 #x_test=x_test.reshape(10000,256,1)
 
@@ -40,7 +44,7 @@ y_test = keras.utils.to_categorical(y_test,10)
 print(x_train.shape)
 
 model=Sequential()
-model.add(Conv2D(16, kernel_size=(5,5), activation='relu',input_shape=(256,),padding='same'))
+model.add(Conv2D(16, kernel_size=(5,5), activation='relu',input_shape=(28,28,1),padding='same'))
 model.add(LeakyReLU(alpha=.3))
 model.add(MaxPooling2D(pool_size=(2,2)))
 model.add(Dense(128, activation='relu'))
