@@ -5,6 +5,17 @@
 * 一些較特殊的使用：LeakyReLU, Nadam
 
 # 遭遇問題
+### Data下載
+* 不知道為什麼用
+```
+from sklearn.datasets import fetch_mldata
+mnist = fetch_mldata('MNIST original')
+```
+都會跳出
+```
+ConnectionResetError: [WinError 10054] 遠端主機已強制關閉一個現存的連線。
+```
+所以嘗試了很多次依然無法成功只好用keras的MNIST D
 ### 降維的使用
 * 大致概念不是很清楚
 * PCA的套用問題
