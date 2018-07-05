@@ -1,6 +1,7 @@
 import keras
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow as tf
 from keras.datasets import mnist
 from sklearn.decomposition import PCA
 from keras.models import Sequential
@@ -44,6 +45,11 @@ print(x_train.shape,x_test.shape)
 y_train = keras.utils.to_categorical(y_train,10)
 y_test = keras.utils.to_categorical(y_test,10)
 
+# 自動增長 GPU 記憶體用量
+gpu_options=tf.GPUOptions(allow_growth=True)
+sess=tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+# 設定 Keras 使用的 Session
+tf.keras.backend.set_session(sess)
 
 model=Sequential()
 model.add(Conv2D(16, kernel_size=(5,5), activation='relu',input_shape=(256,1,1),padding='same'))
@@ -53,6 +59,7 @@ model.add(Dropout(0.25))
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.25))
 model.add(Flatten())
+model.add(Dense(128, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 
 model.summary()
@@ -62,8 +69,8 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 
 train_history = model.fit(x_train, y_train,
-                    batch_size=320,
-                    epochs=10,
+                    batch_size=128,
+                    epochs=15,
                     verbose=1,
                     validation_data=(x_test, y_test))
 score=model.evaluate(x_test, y_test, verbose=0)
