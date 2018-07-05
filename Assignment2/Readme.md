@@ -15,7 +15,7 @@ mnist = fetch_mldata('MNIST original')
 ```
 ConnectionResetError: [WinError 10054] 遠端主機已強制關閉一個現存的連線。
 ```
-所以嘗試了很多次依然無法成功只好用keras的MNIST D
+所以嘗試了很多次依然無法成功只好用keras的MNIST Data
 ### 降維的使用
 * 大致概念不是很清楚
 * PCA的套用問題
