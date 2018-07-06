@@ -12,7 +12,7 @@
 
 ![intro]
 
-最後決定使用256這個數字
+  最後決定使用256這個數字
 
 * 開始套用sequential model
   * Conv2D
