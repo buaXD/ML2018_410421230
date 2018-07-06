@@ -1,4 +1,5 @@
 [perf]:https://github.com/buaXD/ML2018_410421230/blob/master/Assignment2/Pic/giveup.jpg
+[intro]:https://github.com/buaXD/ML2018_410421230/blob/master/Assignment2/Pic/intro.png
 
 # Handwritten Character Recognition
 
@@ -7,7 +8,8 @@
 # 大致流程
 * 下載檔案
 * resize成適合大小
-* 透過PCA降維(參考一些文章，最後決定留下256項比較有用的)
+* 透過PCA降維(參考一些文章寫道，大約90%的解釋方差可以用200以上的特性來描述。因此，如果想在這上面實現一個PCA，提取前200個特徵將是一個非常符合邏輯的選擇，因為它們已經佔了大約90%的信息(參考下圖)。最後決定留下256項比較有用的)
+![intro]
 * 開始套用sequential model
   * Conv2D
   * Maxpooling2D
