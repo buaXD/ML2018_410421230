@@ -9,11 +9,11 @@
 * resize成適合大小
 * 透過PCA降維
 * 開始套用sequential model
- * Conv2D
- * Maxpooling2D
- * Dense
- * Flatten
- * Dense
+  * Conv2D
+  * Maxpooling2D
+  * Dense
+  * Flatten
+  * Dense
 
 
 # 遭遇問題
