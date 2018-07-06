@@ -7,7 +7,7 @@
 # 大致流程
 * 下載檔案
 * resize成適合大小
-* 透過PCA降維
+* 透過PCA降維(參考一些文章，最後決定留下256項比較有用的)
 * 開始套用sequential model
   * Conv2D
   * Maxpooling2D
