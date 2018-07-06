@@ -9,7 +9,11 @@
 * resize成適合大小
 * 透過PCA降維
 * 開始套用sequential model
-** 涵蓋
+ * Conv2D
+ * Maxpooling2D
+ * Dense
+ * Flatten
+ * Dense
 
 
 # 遭遇問題
@@ -37,4 +41,4 @@ Negative dimension size caused by subtracting 2 from 1 for 'max_pooling2d_1/MaxP
 ![perf]
 
 # 感想
-看樣子這個暑假真的要好好搞懂，很多東西都只了解大概，輸入輸出多少都不懂，造成只能硬試看合不合，不過完整靠自己(專案有組員)寫一遍才知道其實自己理解的非常不完全，是個很棒的經驗
+看樣子這個暑假真的要好好搞懂，很多東西都只了解大概，輸入輸出多少都不懂，造成只能硬試看合不合，不過完整靠自己(期末專案有組員)寫一遍才知道其實自己理解的非常不完全，是個很棒的經驗。
